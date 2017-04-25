@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getActionMasked() == MotionEvent.ACTION_UP) {
                     long pressTime = event.getEventTime() - event.getDownTime();
-                    resetAnimation(pressTime / 120);
+                    resetAnimation(pressTime / 100);
                     springAnim.start();
                 }
                 return true;
