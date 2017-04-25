@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void resetAnimation(float stiffness) {
-        springAnim = new SpringAnimation(img, DynamicAnimation.TRANSLATION_Y, 500);
+        springAnim = new SpringAnimation(ghostImage, DynamicAnimation.TRANSLATION_Y, 500);
         springAnim.getSpring().setDampingRatio(DAMPING_RATIO_HIGH_BOUNCY);
         springAnim.getSpring().setStiffness(stiffness > 1 ?
                 stiffness * STIFFNESS_VERY_LOW :
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         springAnim.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
             @Override
             public void onAnimationEnd(DynamicAnimation animation, boolean canceled, float value, float velocity) {
-                img.setTranslationY(originalButtonTranslation);
+                ghostImage.setTranslationY(originalButtonTranslation);
             }
         });
     }
