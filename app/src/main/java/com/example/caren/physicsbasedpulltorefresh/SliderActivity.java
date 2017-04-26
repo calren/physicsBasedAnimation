@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.animation.DynamicAnimation;
 import android.support.animation.SpringAnimation;
-import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
@@ -44,14 +43,16 @@ public class SliderActivity extends Activity {
     }
 
     private void resetAnimation() {
-        Log.i("Caren", "b : " + (bounceSeekBar
-                .getProgress() / 200f));
+        int stiffnessValue =
+                stiffnessSeekBar.getProgress() == 0 ? 1 : stiffnessSeekBar.getProgress();
+        int dampnessValue =
+                stiffnessSeekBar.getProgress() == 0 ? 1 : bounceSeekBar.getProgress();
+
         springAnim =
                 new SpringAnimation(ghostImage, DynamicAnimation.TRANSLATION_Y, FINAL_Y_POSITION);
-        springAnim.getSpring().setStiffness(STIFFNESS_VERY_LOW * (stiffnessSeekBar.getProgress() / 2));
-//        springAnim.getSpring().setDampingRatio(bounceSeekBar.getProgress() / 200);
-        springAnim.getSpring().setDampingRatio(DAMPING_RATIO_MEDIUM_BOUNCY - (bounceSeekBar
-                .getProgress() / 200f));
+        springAnim.getSpring().setStiffness(STIFFNESS_VERY_LOW * (stiffnessValue / 2));
+        springAnim.getSpring()
+                .setDampingRatio(DAMPING_RATIO_MEDIUM_BOUNCY - (dampnessValue / 200f));
 
 
         springAnim.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
