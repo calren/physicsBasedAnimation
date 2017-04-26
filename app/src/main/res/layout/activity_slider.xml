@@ -31,15 +31,33 @@
         android:id="@+id/stiffnessValueAdjustment"
         android:layout_height="100dp"
         android:max="100"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="180dp"
         android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="stiffness value"
+        android:id="@+id/stiffnessValue"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/stiffnessValueAdjustment"/>
 
     <SeekBar
         android:layout_width="match_parent"
         android:id="@+id/bounceValueAdjustment"
         android:layout_height="100dp"
         android:max="100"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:id="@+id/dampingRatioValue"
+        android:text="damping ratio"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/bounceValueAdjustment"/>
 
 </RelativeLayout>

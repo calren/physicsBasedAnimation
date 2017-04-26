@@ -6,6 +6,7 @@ import android.support.animation.DynamicAnimation;
 import android.support.animation.SpringAnimation;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 import static android.support.animation.SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY;
 import static android.support.animation.SpringForce.STIFFNESS_VERY_LOW;
@@ -21,6 +22,9 @@ public class SliderActivity extends Activity {
     private SeekBar bounceSeekBar;
     private SeekBar stiffnessSeekBar;
 
+    private TextView bounceValue;
+    private TextView stiffnessValue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,39 @@ public class SliderActivity extends Activity {
         button = findViewById(R.id.button);
         bounceSeekBar = (SeekBar) findViewById(R.id.bounceValueAdjustment);
         stiffnessSeekBar = (SeekBar) findViewById(R.id.stiffnessValueAdjustment);
+        bounceValue = (TextView) findViewById(R.id.dampingRatioValue);
+        stiffnessValue = (TextView) findViewById(R.id.stiffnessValue);
+
+        bounceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                   bounceValue.setText("damping ratio value: " + (DAMPING_RATIO_MEDIUM_BOUNCY -
+                           (i / 200f)));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+
+        stiffnessSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                stiffnessValue.setText("stiffness value: " + (STIFFNESS_VERY_LOW * (i / 2)));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
 
         originalButtonTranslation = button.getTranslationY();
 
@@ -46,7 +83,7 @@ public class SliderActivity extends Activity {
         int stiffnessValue =
                 stiffnessSeekBar.getProgress() == 0 ? 1 : stiffnessSeekBar.getProgress();
         int dampnessValue =
-                stiffnessSeekBar.getProgress() == 0 ? 1 : bounceSeekBar.getProgress();
+                bounceSeekBar.getProgress() == 0 ? 1 : bounceSeekBar.getProgress();
 
         springAnim =
                 new SpringAnimation(ghostImage, DynamicAnimation.TRANSLATION_Y, FINAL_Y_POSITION);
