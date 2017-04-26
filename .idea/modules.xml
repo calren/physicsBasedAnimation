@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PhysicsBasedPullToRefresh.iml" filepath="$PROJECT_DIR$/PhysicsBasedPullToRefresh.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/physicsBasedAnimation.iml" filepath="$PROJECT_DIR$/physicsBasedAnimation.iml" />
     </modules>
   </component>
 </project>

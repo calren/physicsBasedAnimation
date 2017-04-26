@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.caren.physicsbasedpulltorefresh.MainActivity">
+
+    <TextView
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        android:text="Animate!"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ghost" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:id="@+id/stiffnessValueAdjustment"
+        android:layout_height="100dp"
+        android:max="100"
+        android:layout_marginBottom="150dp"
+        android:layout_alignParentBottom="true"/>
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:id="@+id/bounceValueAdjustment"
+        android:layout_height="100dp"
+        android:max="100"
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>
