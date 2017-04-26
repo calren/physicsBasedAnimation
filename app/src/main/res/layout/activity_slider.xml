@@ -29,9 +29,9 @@
     <SeekBar
         android:layout_width="match_parent"
         android:id="@+id/stiffnessValueAdjustment"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:max="100"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="100dp"
         android:layout_alignParentBottom="true"/>
 
     <TextView
@@ -46,9 +46,9 @@
     <SeekBar
         android:layout_width="match_parent"
         android:id="@+id/bounceValueAdjustment"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:max="100"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"/>
 
     <TextView
