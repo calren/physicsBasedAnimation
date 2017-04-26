@@ -9,6 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import static android.support.animation.SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY;
+import static android.support.animation.SpringForce.DAMPING_RATIO_NO_BOUNCY;
 import static android.support.animation.SpringForce.STIFFNESS_VERY_LOW;
 
 public class SliderActivity extends Activity {
@@ -40,8 +41,8 @@ public class SliderActivity extends Activity {
         bounceSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                   bounceValue.setText("damping ratio value: " + (DAMPING_RATIO_MEDIUM_BOUNCY -
-                           (i / 200f)));
+                bounceValue.setText(
+                        "damping ratio value: " + (DAMPING_RATIO_MEDIUM_BOUNCY - (i / 200f)));
             }
 
             @Override
@@ -80,16 +81,23 @@ public class SliderActivity extends Activity {
     }
 
     private void resetAnimation() {
-        int stiffnessValue =
-                stiffnessSeekBar.getProgress() == 0 ? 1 : stiffnessSeekBar.getProgress();
-        int dampnessValue =
-                bounceSeekBar.getProgress() == 0 ? 1 : bounceSeekBar.getProgress();
-
         springAnim =
                 new SpringAnimation(ghostImage, DynamicAnimation.TRANSLATION_Y, FINAL_Y_POSITION);
-        springAnim.getSpring().setStiffness(STIFFNESS_VERY_LOW * (stiffnessValue / 2));
-        springAnim.getSpring()
-                .setDampingRatio(DAMPING_RATIO_MEDIUM_BOUNCY - (dampnessValue / 200f));
+
+        if (stiffnessSeekBar.getProgress() == 0) {
+            springAnim.getSpring().setStiffness(STIFFNESS_VERY_LOW);
+        } else {
+            springAnim.getSpring()
+                    .setStiffness(STIFFNESS_VERY_LOW * (stiffnessSeekBar.getProgress() / 2));
+        }
+
+        if (bounceSeekBar.getProgress() == 0) {
+            springAnim.getSpring().setDampingRatio(DAMPING_RATIO_NO_BOUNCY);
+        } else {
+            springAnim.getSpring()
+                    .setDampingRatio(
+                            DAMPING_RATIO_MEDIUM_BOUNCY - (bounceSeekBar.getProgress() / 200f));
+        }
 
 
         springAnim.addEndListener(new DynamicAnimation.OnAnimationEndListener() {
